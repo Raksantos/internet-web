@@ -1,0 +1,121 @@
+<html lang="pt">
+
+<head>
+    <title>Jogo da Advinhação</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="site.css">
+</head>
+<script>
+    //quando a janela carregar, faça:
+    window.onload = function () {
+        //recebendo nome e idade dos jogadores
+        var jogador1 = prompt("Qual o NOME do PRIMEIRO jogador?");
+        var idade_j1 = prompt("Qual a IDADE do PRIMEIRO jogador?");
+        var jogador2 = prompt("Qual o NOME do SEGUNDO jogador?");
+        var idade_j2 = prompt("Qual a IDADE do SEGUNDO jogador?");
+
+        //gravando nomes e idades na página html
+        document.getElementById("nome_j1").innerHTML = jogador1;
+        document.getElementById("idade_j1").innerHTML = idade_j1 + " anos";
+        document.getElementById("nome_j2").innerHTML = jogador2;
+        document.getElementById("idade_j2").innerHTML = idade_j2 + " anos";
+    }
+
+    function jogar() {
+        //pegando nomes e idades
+        var jogador1 = document.getElementById("nome_j1").innerHTML;
+        var idade_j1 = document.getElementById("idade_j1").innerHTML;
+        var jogador2 = document.getElementById("nome_j2").innerHTML;
+        var idade_j2 = document.getElementById("idade_j2").innerHTML;
+
+        //gerando numero aleatorio
+        var num = parseInt((Math.random() * 20) + 1);
+
+        var acertou = false;
+        var tentativas_j1 = 0, tentativas_j2 = 0; //quantidade de tentativas de cada jogador
+
+        //enquanto ninguem acertar, repita:
+        while (!acertou) {
+            var jogada1 = parseInt(prompt("Oi " + jogador1 + ", qual número você chuta?", "")); //recebe a tentativa de chute do jogador 1
+            tentativas_j1++; // incrementa o contador de tentativas do jogdor 1
+
+            if (num === jogada1) {
+                // atualiza o placar da página
+                var value = parseInt(document.getElementById("pontos_j1").innerHTML);
+                document.getElementById("pontos_j1").innerHTML = (value + 1);
+
+                vitoria(jogador1, idade_j1, tentativas_j1, num); // parabeniza o vencedor
+                derrota(jogador2, idade_j2, tentativas_j2, num); // incentiva o perdedor
+
+                acertou = true;
+                break; //encerra o loop
+            }
+            else if (num > jogada1) {
+                alert("O numero sorteado é MAIOR que " + jogada1);
+            }
+            else {
+                alert("O numero sorteado é MENOR que " + jogada1);
+            }
+
+            var jogada2 = parseInt(prompt("Oi " + jogador2 + ", qual número você chuta?", "")); //recebe a tentativa de chute do jogador 2
+            tentativas_j2++; // incrementa o contador de tentativas do jogdor 2
+
+            if (num === jogada2) {
+                // atualiza o placar da página
+                var value = parseInt(document.getElementById("pontos_j2").innerHTML);
+                document.getElementById("pontos_j2").innerHTML = (value + 1);
+
+                vitoria(jogador2, idade_j2, tentativas_j1, num); // parabeniza o vencedor
+                derrota(jogador1, idade_j1, tentativas_j2, num); // incentiva o perdedor
+
+                acertou = true;
+                break; //encerra o loop
+            }
+            else if (num > jogada2) {
+                alert("O numero sorteado é MAIOR que " + jogada2);
+            }
+            else {
+                alert("O numero sorteado é MENOR que " + jogada2);
+            }
+        }
+    }
+
+    function vitoria(jogador, idade, tentativas, num) {
+        //escreve mensagem de saida para o vencedor
+        var msg = "Parabéns " + jogador + " (" + idade + "), você VENCEU!!!\n";
+        msg += "Resultados do jogo:\n";
+        msg += "O número sorteado era: " + num + "\n";
+        msg += jogador + " errou " + (tentativas - 1) + " veze(s) antes de acertar, totalizando" + tentativas + " jogada(s)";
+        alert(msg);
+    }
+
+    function derrota(jogador, idade, tentativas, num) {
+        //escreve mensagem de saida para o perdedor
+        var msg = "Que pena " + jogador + " (" + idade + "), você perdeu :/ \n";
+        msg += "Mas não se desanime!!! Continue se esforçando e boa sorte na próxima vez!!!\n";
+        msg += "Resultados do jogo:\n";
+        msg += "O número sorteado era: " + num + "\n";
+        msg += jogador + " errou " + tentativas + " veze(s) antes de seu adversário acertar";
+        alert(msg);
+    }
+</script>
+
+<body>
+    <div class="container">
+        <div class="jogadores">
+          Jogador 1: <label id='nome_j1'></label> (<label id='idade_j1'></label>)
+          <br>
+          Jogador 2: <label id='nome_j2'></label> (<label id='idade_j2'></label>)
+        </div>
+        <br>
+        <div class="numeros">
+            <label id='pontos_j1'>0</label>
+            <label>X</label>
+            <label id="pontos_j2">0</label> <br>
+        </div>
+        <input class="botao-iniciar" type="button" value="Iniciar Jogo" onclick="jogar()">
+        <br>
+    </div>
+</body>
+
+</html>

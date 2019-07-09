@@ -1,0 +1,50 @@
+Quando a janela carregar, faça:
+  //entrada dos nomes e idades dos jogadores
+  variavel nome_j1 = nome_primeiro_jogador
+  variavel idade_j1 = idade_primeiro_jogador
+  variavel jogador_j2 = nome_segundo_jogador
+  variavel idade_j2 = idade_segundo_jogador
+
+  FIM-DA-FUNÇÃO
+
+Quando o botão iniciar for apertado, faça:
+  //recebendo os nomes e idades salvos
+  variavel jogador1 = nome_j1
+  variavel idade1 = idade_j1
+  variavel jogador2 = nome_j2
+  variavel idade2 = idade2
+
+  variavel numeroAleatorio = random()// função que gera um número aleatório entre 20 e 1
+  variavel acertou = falso //inicia a variavel de acerto como falsa e muda seu estado caso alguém acerte
+  variavel tentativa_j1 = 0, tentativa_j2 = 0// numero de tentativas dos jogadores
+
+  enquanto (!acertou): //enquanto a variavel acertou for falsa
+      variavel jogada1 = entrada_jogador_j1
+      tentativa_j1 = tentativa_j1 + 1 //soma mais um a tentativa
+
+      se (jogada1 == numeroAleatorio):
+        imprima(vitoria do jogador_j1, tentativa_j1)
+        imprima(derrota do jogador_j2, tentativa_j2)
+        acertou = verdadeiro//quebra o loop
+
+      se (jogada1 > numeroAleatorio):
+        imprima(numero informado maior que o numero verificado)
+
+      se não:
+        imprima(numero informado menor que o numero verificado)
+
+      variavel jogada2 = entrada_jogador_j2
+      tentativa_j2 = tentativa_j2 + 1 //soma mais um a tentativa
+
+      se (jogada2 == numeroAleatorio):
+        imprima(vitoria do jogador_j2, tentativa_j2)
+        imprima(derrota do jogador_j1, tentativa_j1)
+        acertou = verdadeiro
+
+      se (jogada2 > numeroAleatorio):
+        imprima(numero informado maior que o numero verificado)
+
+      se não:
+        imprima(numero informado menor que o numero verificado)
+
+    FIM-DA-FUNÇÃO

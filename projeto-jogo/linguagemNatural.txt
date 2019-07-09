@@ -1,0 +1,21 @@
+1 - Entrada dos dados dos jogadores (nomes e idades);
+
+2 - Gera número aleatório;
+
+3 - Entrada no laço de repetição até que alguém acerte o número aleatório;
+
+4 - Entrada da tentativa do jogador 1;
+
+5 - Caso acerte, imprime mensagem de vitória para o jogador 1, mensagem de motivação para o jogador 2,
+adiciona mais um ao número de vitórias do jogador 1 e reinicia o jogo, gerando um novo número aleatório;
+
+6 - Caso não acerte, informa se o número entregue era maior ou menor que o número aleatório e adiciona
+mais um ao número de tentativas do jogador 1;
+
+7 - Entrada da tentativa do jogador 2;
+
+8 - Caso acerte, imprime mensagem de vitória para o jogador 2, mensagem de motivação para o jogador 1,
+adiciona mais um ao número de vitórias do jogador 2 e reinicia o jogo, gerando um novo número aleatório;
+
+9 - Caso não acerte, informa se o número entregue era maior ou menor que o número aleatório e adiciona
+mais um ao número de tentativas do jogador 2;
